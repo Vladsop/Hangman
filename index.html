@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="stylesheet.css" rel="stylesheet">
+
+    <title>Hangman</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Hangman</h2>
+        <h2 id="hearts"></h2>
+        <h5 id="message"></h5>
+        <button class="btn btn-secondary" id="restartGame" onclick="restartGame();">Restart Game</button>
+        <div class="input-group flex-nowrap" style="margin-top: 40px; margin-bottom: 40px; width: auto";>
+            <input type="text" class="form-control" width=10px placeholder="Please enter a word to start the game!" id="wordInput">
+            <button class="btn btn-info" id="createGame" type="button" onclick="printMessage(createGame());">Create Game</button>
+        </div>
+        <h6 id="matchingLetters">
+        <h6 id="alphabet">
+
+
+    </div>
+
+    <!--JQuery and Bootstrap Bundle with Popper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!--Script for buttons -->
+    <script src="script.js"></script>
+    <!--Script for Confetii -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+</body>
+
+</html>
