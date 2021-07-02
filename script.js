@@ -56,7 +56,7 @@ String.prototype.replaceAt = function(index, replacement) {
 function searchWordLetters(id) {
     let validateLetter = false;
     for (let i = 0; i < gameWord.length; ++i) {
-        if ((id.localeCompare(gameWord.charAt(i)) == 0)) {
+        if ((id.localeCompare(gameWord.charAt(i)) == 0) && (id.localeCompare(hiddenWord.charAt(i)) != 0)) {
             hiddenWord = hiddenWord.replaceAt(i, id);
             validateLetter = true;
             ++validLetters;
