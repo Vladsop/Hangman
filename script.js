@@ -84,6 +84,8 @@ function searchWordLetters(id) {
         });
         printMessage("Congratulations, you guessed it");
         $("#restartGame").show();
+        $("#alphabet").hide();
+        $("#inputForm").hide();
     }
     return hiddenWord;
 }
