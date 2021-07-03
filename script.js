@@ -6,13 +6,17 @@ function createGame() {
     $("#alphabet").empty();
     gameWord = document.getElementById("wordInput").value.toUpperCase(), hiddenWord = "";
     $("#wordInput").val("");
-    for (let i = 0; i < gameWord.length; ++i) {
-        hiddenWord += "_";
+    if (gameWord.length == 0) {
+        return "Please enter at least one letter!";
+    } else {
+        for (let i = 0; i < gameWord.length; ++i) {
+            hiddenWord += "_";
+        }
+        displayHearts(remainingHearts);
+        displayMatchingLetters(hiddenWord);
+        displayAlphabet();
+        return "You can pick letters from the alphabet bellow to win the game!";
     }
-    displayHearts(remainingHearts);
-    displayMatchingLetters(hiddenWord);
-    displayAlphabet();
-    return "You can pick letters from the alphabet bellow to win the game!";
 }
 
 //Displays a number of six solid hearts suggesting the number of lives (tries) the player has in order to win the game.
@@ -27,6 +31,10 @@ function displayHearts(remainingHearts) {
     }
     if (remainingHearts == 0) {
         $("#restartGame").show();
+        $("#alphabet").hide();
+        $("#inputForm").hide();
+        $("#matchingLetters").hide();
+
         return "You lost all of your lives! Want to try again?";
     } else {
         return "You have " + remainingHearts + " lives left!";
@@ -87,7 +95,10 @@ function restartGame() {
     printMessage("");
     $("#hearts").empty();
     $("#matchingLetters").empty();
+    $("#matchingLetters").show();
     $("#alphabet").empty();
+    $("#alphabet").show();
+    $("#inputForm").show();
     $("#restartGame").hide();
 }
 
