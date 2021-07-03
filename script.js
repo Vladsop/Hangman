@@ -1,22 +1,29 @@
 $("#restartGame").hide();
 var gameWord, hiddenWord, remainingHearts = 6, validLetters = 0;
 
+//Checks if the input is empty.
+function verifyEmptyInput() {
+    if (gameWord.length == 0) {
+        return true;
+    }
+    return false;
+}
+
 // Creates the UI of the game for the word to be guessed.
 function createGame() {
     $("#alphabet").empty();
     gameWord = document.getElementById("wordInput").value.toUpperCase(), hiddenWord = "";
-    $("#wordInput").val("");
-    if (gameWord.length == 0) {
+    if (verifyEmptyInput(gameWord)) {
         return "Please enter at least one letter!";
-    } else {
-        for (let i = 0; i < gameWord.length; ++i) {
-            hiddenWord += "_";
-        }
-        displayHearts(remainingHearts);
-        displayMatchingLetters(hiddenWord);
-        displayAlphabet();
-        return "You can pick letters from the alphabet bellow to win the game!";
     }
+    $("#wordInput").val("");
+    for (let i = 0; i < gameWord.length; ++i) {
+        hiddenWord += "_";
+    }
+    displayHearts(remainingHearts);
+    displayMatchingLetters(hiddenWord);
+    displayAlphabet();
+    return "You can pick letters from the alphabet bellow to win the game!";
 }
 
 //Displays a number of six solid hearts suggesting the number of lives (tries) the player has in order to win the game.
@@ -51,7 +58,7 @@ function displayAlphabet() {
     let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     for (let i = 0; i < 26; ++i) {
         let letter = alphabet.charAt(i);
-        $('#alphabet').append('<button class="btn btn-dark" id=' + letter + ' style="margin-right: 5px; margin-bottom: 5px;" onclick="(displayMatchingLetters(searchWordLetters(id)));">' + letter + '</button>');
+        $('#alphabet').append('<button class="btn btn-dark" id=' + letter + ' onclick="searchWordLetters(id);">' + letter + '</button>');
     }
 }
 
@@ -82,12 +89,12 @@ function searchWordLetters(id) {
                 y: 0.6
             }
         });
-        printMessage("Congratulations, you guessed it");
+        printMessage("Congratulations, you guessed the word!");
         $("#restartGame").show();
         $("#alphabet").hide();
         $("#inputForm").hide();
     }
-    return hiddenWord;
+    displayMatchingLetters(hiddenWord);
 }
 
 //Restarts the game with all the necessary elements to their default values;

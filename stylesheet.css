@@ -30,3 +30,8 @@ h6 {
     margin-bottom: 30px;
     color: white;
 }
+
+button {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
